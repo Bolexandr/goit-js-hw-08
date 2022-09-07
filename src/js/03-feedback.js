@@ -9,6 +9,7 @@ const inptData = Object();
 ///запис об'єкта який створюється з розпарсеного рядка типу JSON в змінну
 const objFromStorage = JSON.parse(localStorage.getItem("feedback-form-state"))
 
+////// Перевірка чи не пустий  об'єкт
 if (objFromStorage === null) {
   console.log('В сховищі відсутні дані  для автозаповнення форми')
 } else {
