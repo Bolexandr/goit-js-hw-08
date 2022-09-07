@@ -9,6 +9,10 @@ const inptData = Object();
 ///запис об'єкта який створюється з розпарсеного рядка типу JSON в змінну
 const objFromStorage = JSON.parse(localStorage.getItem("feedback-form-state"))
 
+if (objFromStorage === null) {
+  console.log('В сховищі відсутні дані  для автозаповнення форми')
+} else {
+  
 // /// Перестраховка від пустого об'єкту  перевірка на присутність емейла
 // try {
 //   const { email} = objFromStorage;
@@ -28,6 +32,7 @@ const objFromStorage = JSON.parse(localStorage.getItem("feedback-form-state"))
 ///Оголошення функції для автоматичного заповнення полів
 ///Функція приймає форму яку потрібно заповнити та об'єкт  з властивостями ключі якого є ідентичними значенням 
 /// атрибута name='', а значення є вмістом полів  і автоматисно заповнює поля
+  
 function autoComplietInputs (oneForm , obj) {
   for (let key in obj) {
     try {
@@ -36,10 +41,12 @@ function autoComplietInputs (oneForm , obj) {
  console.log(` в сховищі не знайдено інформації для автозаповнення поля ${key}`)
 }
   }
-  console.log('function is compliet')
+ 
 }
- ///
+ ///виклик функції для автозаповнення
 autoComplietInputs(form,objFromStorage)
+}
+
 
 ///// Оголошення функції для оновлення сториджа
 const storegeUpdater = (e) => {
